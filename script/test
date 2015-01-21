@@ -7,7 +7,7 @@ port=3999
 pid=$!
 trap "kill $pid" INT EXIT
 
-phantom="$(which phantomjs)"
+phantom="./node_modules/.bin/phantomjs"
 
 [ -z "$CI" ] || echo "PhantomJS $($phantom -v)"
 
