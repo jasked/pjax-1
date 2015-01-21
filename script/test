@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+
+[ -z "$CI" ] || script/bootstrap
+
+port=3999
+
+export PATH=./node_modules/.bin:"$PATH"
+
+coffee ./test/server.coffee $port &>/dev/null &
+pid=$!
+trap "kill $pid" INT EXIT
+
+exec mocha-phantomjs -p `which phantomjs` \
+  "http://localhost:${port}/test/index.html"
