@@ -7,5 +7,9 @@ port=3999
 pid=$!
 trap "kill $pid" INT EXIT
 
-exec mocha-phantomjs -p `which phantomjs` \
+phantom="$(which phantomjs)"
+
+[ -z "$CI" ] || echo "PhantomJS $($phantom -v)"
+
+exec mocha-phantomjs -p "$phantom" \
   "http://localhost:${port}/test/index.html"
