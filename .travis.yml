@@ -3,3 +3,7 @@ install: script/bootstrap
 script: script/test
 language: node_js
 node_js: '0.10'
+cache:
+  directories:
+    - node_modules
+    - bower_components
