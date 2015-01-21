@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
+export PATH=./node_modules/.bin:"$PATH"
 [ -z "$CI" ] || script/bootstrap
 
 port=3999
-
-export PATH=./node_modules/.bin:"$PATH"
 
 coffee ./test/server.coffee $port &>/dev/null &
 pid=$!
