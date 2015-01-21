@@ -11,5 +11,5 @@ phantom="./node_modules/.bin/phantomjs"
 
 [ -z "$CI" ] || echo "PhantomJS $($phantom -v)"
 
-exec mocha-phantomjs -p "$phantom" \
+exec ./node_modules/.bin/mocha-phantomjs -p "$phantom" \
   "http://localhost:${port}/test/index.html"
