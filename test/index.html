@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pjax Tests</title>
+  <link rel="stylesheet" href="/bower_components/mocha/mocha.css">
+  <style>
+    iframe {
+      margin-left: -10000px;
+    }
+  </style>
+</head>
+<body>
+  <div id="mocha"></div>
+
+  <script src="/bower_components/es6-promise/promise.js"></script>
+  <script src="/bower_components/chai/chai.js"></script>
+  <script src="/bower_components/mocha/mocha.js"></script>
+  <script>
+    mocha.setup('tdd')
+    self.assert = chai.assert
+  </script>
+
+  <script src="/test/test.js"></script>
+
+  <script>
+    if (self.mochaPhantomJS) {
+      mochaPhantomJS.run()
+    } else {
+      mocha.run()
+    }
+  </script>
+</body>
+</html>
