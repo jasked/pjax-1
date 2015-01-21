@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-export PATH=./node_modules/.bin:"$PATH"
-[ -z "$CI" ] || script/bootstrap
-
 port=3999
 
-coffee ./test/server.coffee $port &>/dev/null &
+./node_modules/.bin/coffee ./test/server.coffee $port &>/dev/null &
 pid=$!
 trap "kill $pid" INT EXIT
 
